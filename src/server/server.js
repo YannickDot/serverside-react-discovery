@@ -10,7 +10,13 @@ var router = Router();
 var app = koa();
 
 var str = ReactDOMServer.renderToString(<MyComponent />)
-var initialState = { counter : 3 }
+var initialState = { counter : 4 }
+
+console.log(str);
+
+debugger;
+
+
 
 router.get('/', function *(){
   this.body = `<!DOCTYPE html>

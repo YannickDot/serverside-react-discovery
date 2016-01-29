@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack-watch": "webpack --progress --colors --watch",
     "build": "rm -rf lib/* && babel src/shared/ -d lib/shared/ && babel src/server/ -d lib/server/ && webpack -p",
-    "start": "npm run build && nodemon lib/server/server.js",
-    "rollup": "node rollup.js"
+    "start": "nodemon --exec npm run babel-node -- src/server/server.js & npm run webpack-watch",
+    "debug": "npm run build && devtool lib/server/server.js",
+    "rollup": "node rollup.js",
+    "babel-node": "babel-node --presets es2015-node5 --presets react"
   },
   "repository": {
     "type": "git",
